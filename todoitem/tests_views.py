@@ -28,7 +28,7 @@ class TestViews(TestCase):
         
         
     def test_post_create_item(self):
-        response = self.client.post('/add', {'name': 'A Name'})
+        response = self.client.post('/add', {'name': 'A Name', 'priority': 'medium'})
         item = get_object_or_404(TodoItem, pk=1)
         self.assertEqual(item.done, False)
         
