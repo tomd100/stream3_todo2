@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import TodoItem
-from .forms import TodoItemForm
+from .models import TodoItem, LoginItem
+from .forms import TodoItemForm, LoginForm
 
 # Create your views here.
 
@@ -51,3 +51,19 @@ def toggle_item(request, id):
 
     item.save();
     return redirect(get_index);
+
+
+def login(request):
+    if request.method == "POST":
+        # Get the details from the request
+        form = LoginForm(request.POST, request.FILES)
+        # handle saving to database
+        if form.is_valid:
+            form.save()
+            return redirect(get_index)
+    else:
+        # GET Request so just give them a bkank form
+        form = LoginForm();
+    return render(request, "login.html", {"form": form})    
+
+    

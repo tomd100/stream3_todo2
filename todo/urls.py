@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from todoitem.views import get_index, add_item, edit_item, toggle_item
+from todoitem.views import get_index, add_item, edit_item, toggle_item, login
 
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     url(r"^add$", add_item),
     url(r"^edit/(\d+)$", edit_item),  # note that the regex returns a varaible (or sorts) called id
     url(r"^toggle/(\d+)$", toggle_item),
+    url(r"^login$", login),
 ]
